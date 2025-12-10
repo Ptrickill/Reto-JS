@@ -1,53 +1,117 @@
-# Reloj Analógico con JavaScript y CSS
+# ⏰ JS + CSS Clock - Reloj Analógico Interactivo
 
-Un reloj analógico funcional creado con HTML, CSS y JavaScript vanilla.
+## 📋 Nombre del Reto
 
-## Características
+**JavaScript30 - Day 2: JS + CSS Clock**
 
-- **Reloj en tiempo real**: Las manecillas se mueven sincronizadas con la hora actual
-- **Diseño responsive**: Se adapta a diferentes tamaños de pantalla
-- **Animaciones suaves**: Transiciones fluidas para un movimiento natural
-- **Manecillas diferenciadas**:
-  - **Segundos**: Manecilla roja delgada (50% de largo)
-  - **Minutos**: Manecilla gris mediana (45% de largo)
-  - **Horas**: Manecilla oscura corta (35% de largo)
+## 🎯 Descripción
 
-## Demo
+Este proyecto es un reloj analógico funcional y elegante que muestra la hora actual en tiempo real. Las manecillas del reloj se actualizan cada segundo utilizando JavaScript vanilla, con animaciones CSS suaves que simulan el movimiento de un reloj analógico tradicional. El objetivo del reto es practicar la manipulación del DOM, trabajar con fechas en JavaScript y crear animaciones CSS basadas en transformaciones.
 
-Abre `index.html` en tu navegador para ver el reloj en acción.
+## 🛠️ Tecnologías Utilizadas
 
-## Tecnologías utilizadas
+![HTML5]
+![CSS3]
+![JavaScript]
 
-- HTML5
-- CSS3
-- JavaScript (ES6+)
+- **HTML5** - Estructura del reloj
+- **CSS3** - Estilos, animaciones y transformaciones
+- **JavaScript (ES6+)** - Lógica para actualizar las manecillas en tiempo real
 
-## Instalación
+## ✨ Características
 
-1. Clona este repositorio:
+- ⏱️ **Actualización en tiempo real** - Las manecillas se mueven sincronizadas con la hora del sistema
+- 🎨 **Diseño elegante** - Interfaz limpia con fondo degradado
+- 🔄 **Animaciones fluidas** - Transiciones suaves con `cubic-bezier`
+- 📐 **Manecillas diferenciadas**:
+  - **Horas** (oscura, corta): 35% de longitud
+  - **Minutos** (gris, mediana): 45% de longitud
+  - **Segundos** (roja, larga): 50% de longitud
+- 📱 **Responsive** - Se adapta a diferentes tamaños de pantalla
+
+## 📸 Captura de Pantalla
+
+<div align="center">
+  
+![Funcionamiento del Reloj](./images/clock-screenshot.png)
+
+*El reloj actualiza las manecillas cada segundo mostrando la hora exacta*
+
+</div>
+
+## 🚀 Instalación y Ejecución Local
+
+### Opción 1: Clonar el repositorio
+
 ```bash
+# Clonar el repositorio
 git clone https://github.com/Ptrickill/Reto-JS.git
+
+# Entrar al directorio
+cd Reto-JS
+
+# Abrir el archivo index.html en tu navegador
+start index.html  # Windows
+open index.html   # macOS
+xdg-open index.html  # Linux
 ```
 
-2. Abre el archivo `index.html` en tu navegador favorito
+### Opción 2: Descarga directa
 
-¡Eso es todo! No se requieren dependencias adicionales.
+1. Descarga el archivo `index.html`
+2. Ábrelo en tu navegador favorito
+3. ¡Listo! No se requieren dependencias ni instalaciones adicionales
 
-## Personalización
+## 🌐 Despliegue
 
-Puedes personalizar fácilmente el reloj modificando los estilos CSS:
+Este proyecto está desplegado y disponible públicamente en:
 
-- **Colores de las manecillas**: Cambia las propiedades `background` en `.hour-hand`, `.min-hand`, `.second-hand`
-- **Tamaño del reloj**: Ajusta `width` y `height` en `.clock`
-- **Velocidad de animación**: Modifica `transition` en `.hand`
+### 🔗 **[https://keen-chimera-9ef780.netlify.app/]**
 
-## Licencia
+Desplegado con **Netlify** - Actualización automática con cada push a `main`
 
-Este proyecto es de código abierto y está disponible para uso personal y educativo.
+## 📝 Código Destacado
 
-## Autor
+### Función principal para actualizar el reloj
 
-[Ptrickill](https://github.com/Ptrickill) "DANIEL DIAZ"
+```javascript
+function setDate() {
+  const now = new Date();
+
+  // Manecilla de segundos
+  const seconds = now.getSeconds();
+  const secondsDegrees = ((seconds / 60) * 360) + 90;
+  secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+
+  // Manecilla de minutos
+  const mins = now.getMinutes();
+  const minsDegrees = ((mins / 60) * 360) + ((seconds/60)*6) + 90;
+  minsHand.style.transform = `rotate(${minsDegrees}deg)`;
+
+  // Manecilla de horas
+  const hour = now.getHours();
+  const hourDegrees = ((hour / 12) * 360) + ((mins/60)*30) + 90;
+  hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+}
+
+setInterval(setDate, 1000);
+```
+
+## 🎨 Personalización
+
+Puedes personalizar el reloj modificando las variables CSS:
+
+- **Colores de las manecillas**: `.hour-hand`, `.min-hand`, `.second-hand`
+- **Tamaño del reloj**: `.clock` → `width` y `height`
+- **Velocidad de animación**: `.hand` → `transition`
+- **Imagen de fondo**: `html` → `background`
+
+## 👨‍💻 Autor
+
+**Daniel Díaz**
+
+- GitHub: [@Ptrickill](https://github.com/Ptrickill)
+- Proyecto: [Reto-JS](https://github.com/Ptrickill/Reto-JS)
 
 ---
 
